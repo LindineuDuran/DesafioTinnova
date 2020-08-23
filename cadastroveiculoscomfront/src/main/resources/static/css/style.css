@@ -1,0 +1,61 @@
+.card
+{
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.alert
+{
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.aw-link-card
+{
+	float: right;
+	padding: 0px;
+}
+
+.aw-titulo-card
+{
+	float: left;
+	padding-top: 2px;
+}
+
+.btn-group-xs > .btn, .btn-xs
+{
+  padding: .25rem .4rem;
+  font-size: .875rem;
+  line-height: .5;
+  border-radius: .2rem;
+}
+
+.cmd
+{
+	width: 115px;
+}
+
+/* Styles for wrapping the search box */
+
+.main
+{
+    width: 33%;
+    margin-bottom: 20px;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control-feedback
+{
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}

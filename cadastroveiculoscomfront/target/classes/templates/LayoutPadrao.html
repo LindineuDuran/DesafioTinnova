@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+
+<title>Locadora</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap-datepicker.standalone.min.css}" />
+
+</head>
+<body>
+
+	<header th:insert="Cabecalho"></header>
+
+	<section layout:fragment="conteudo">
+		<p>Conteúdo principal</p>
+	</section>
+
+	<!-- jQuery Script -->
+	<script type="text/javascript" th:src="@{/js/jquery-3.4.1.min.js}"></script>
+
+	<!-- Popper.js, then Bootstrap JS -->
+	<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+
+	<script type="text/javascript" th:src="@{/js/cobranca.js}"></script>
+	
+	<!-- Calendar Script -->
+	<script th:src="@{/js/bootstrap-datepicker.min.js}"></script>
+	<script th:src="@{/js/bootstrap-datepicker.pt-BR.min.js}"></script>
+
+	<!-- Mask-Money Script -->
+	<script type="text/javascript" th:src="@{/js/jquery.maskMoney.min.js}"></script>
+
+</body>
+</html>

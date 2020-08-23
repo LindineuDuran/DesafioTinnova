@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      
+<div class="modal fade" id="confirmacaoExclusaoModal" tabindex="-1">
+  <div class="modal-dialog">
+	  <form th:attr="data-url-base=@{/titulos}" method="post">
+	  
+	  	<input type="hidden" name="method" value="DELETE" />
+	  	
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title">Você tem certeza?</h5>
+	      </div>
+	      
+	      <div class="modal-body">
+	        <p>Tem certeza que deseja excluir o veículo?</p>
+	      </div>
+	      
+	      <div class="modal-footer">
+	        <button type="submit" class="btn btn-primary">Excluir</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	      </div>
+	    </div>
+	  </form>  
+  </div>
+</div>
+	
+</html>

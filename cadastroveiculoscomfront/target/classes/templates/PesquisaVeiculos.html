@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="LayoutPadrao">
+<head>
+<title>Pesquisa de Veículos</title>
+</head>
+<section layout:fragment="conteudo">
+	<div layout:insert="MensagemGeral"></div>
+
+	<div class="card">
+		<div class="card-header">
+			<div class="clearfix">
+				<h5 class="card-title aw-titulo-card">Pesquisa de Veículos</h5>
+				<a class="btn btn-link aw-link-card" th:href="@{/veiculos/novo}">Novo veiculo</a>
+			</div>
+		</div>
+		<div class="card-body">
+			<form method="GET" th:action="@{/veiculos}" th:object="${filtro}">
+				<div class="main">
+					<div class="input-group">
+						<input type="text" class="form-control"
+							placeholder="Qual veiculo vc está procurando?"
+							autofocus="autofocus" th:field="*{descricao}">
+						<div class="input-group-append">
+							<button class="btn btn-secondary" type="submit">
+								<img src="images/magnifying-glass-2x.png" alt="rec" />
+							</button>
+						</div>
+					</div>
+				</div>
+			</form>
+			<table class="table table-bordered table-striped table-sm">
+				<thead>
+					<tr>
+						<th class="text-center">#</th>
+						<th>Chapa</th>
+						<th>Marca</th>
+						<th>Ano</th>
+						<th>Descrição</th>
+						<th class="text-center">Data de Cadastro</th>
+						<th class="text-center">Data de Atualização</th>
+						<th class="text-left cmd"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="veiculo : ${veiculos}">
+						<td class="text-center" th:text="${veiculo.codigo}"></td>
+						<td th:text="${veiculo.chapa}"></td>
+						<td th:text="${veiculo.marca}"></td>
+						<td th:text="${veiculo.ano}"></td>
+						<td th:text="${veiculo.descricao}"></td>
+						<td class="text-center" th:text="${{veiculo.created}}"></td>
+						<td class="text-center" th:text="${{veiculo.updated}}"></td>
+						<td class="text-left"><a class="btn btn-link btn-xs"
+							th:href="@{/veiculos/{codigo}(codigo=${veiculo.codigo})}"
+							rel="tooltip" data-placement="top" title="Editar"> <img
+								src="images/pencil.png" alt="edit" />
+						</a> <a class="btn btn-link btn-xs" data-toggle="modal"
+							data-target="#confirmacaoExclusaoModal"
+							th:attr="data-codigo=${veiculo.codigo}, data-descricao=${veiculo.descricao}"
+							rel="tooltip" data-placement="top" title="Excluir"> <img
+								src="images/trash-2x.png" alt="del" />
+						</a></td>
+					</tr>
+					<tr>
+						<td colspan="6" th:if="${#lists.isEmpty(veiculos)}">Nenhum
+							veículo foi encontrado</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div layout:insert="DialogoConfirmExclusao"></div>
+</section>
+</html>
