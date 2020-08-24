@@ -33,7 +33,7 @@ public class VeiculoController
 	@RequestMapping("/novo")
 	public ModelAndView novo()
 	{
-		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
+		ModelAndView mv = new ModelAndView(this.CADASTRO_VIEW);
 		mv.addObject(new Veiculo());
 
 		return mv;
@@ -44,26 +44,26 @@ public class VeiculoController
 	{
 		if (errors.hasErrors())
 		{
-			return CADASTRO_VIEW;
+			return this.CADASTRO_VIEW;
 		}
 		try
 		{
-			veiculoService.salvar(veiculo);
+			this.veiculoService.salvar(veiculo);
 			attributes.addFlashAttribute("mensagem", "Veículo salvo com sucesso!");
 
-			return "redirect:/veiculos/novo";
+			return "redirect:/veiculos";
 		}
 		catch (IllegalArgumentException e)
 		{
 			errors.rejectValue("created", null, e.getMessage());
-			return CADASTRO_VIEW;
+			return this.CADASTRO_VIEW;
 		}
 	}
 
 	@RequestMapping
 	public ModelAndView pesquisar(@ModelAttribute("filtro") VeiculoFilter filtro)
 	{
-		List<Veiculo> todosVeiculos = veiculoService.filtrar(filtro);
+		List<Veiculo> todosVeiculos = this.veiculoService.filtrar(filtro);
 		ModelAndView mv = new ModelAndView("PesquisaVeiculos");
 		mv.addObject("veiculos", todosVeiculos);
 
@@ -73,7 +73,7 @@ public class VeiculoController
 	@RequestMapping("{codigo}")
 	public ModelAndView edicao(@PathVariable("codigo") Optional<Veiculo> veiculo)
 	{
-		ModelAndView mv = new ModelAndView(CADASTRO_VIEW);
+		ModelAndView mv = new ModelAndView(this.CADASTRO_VIEW);
 		mv.addObject("veiculo", veiculo);
 		return mv;
 	}
@@ -81,7 +81,7 @@ public class VeiculoController
 	@RequestMapping(value = "{codigo}", method = RequestMethod.POST)
 	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes)
 	{
-		veiculoService.excluir(codigo);
+		this.veiculoService.excluir(codigo);
 		attributes.addFlashAttribute("mensagem", "Veículo excluído com sucesso!");
 
 		return "redirect:/veiculos";
@@ -90,7 +90,7 @@ public class VeiculoController
 	@RequestMapping(value = "/{codigo}/vender", method = RequestMethod.PUT)
 	public @ResponseBody String receber(@PathVariable Long codigo)
 	{
-		return veiculoService.vender(codigo);
+		return this.veiculoService.vender(codigo);
 	}
 
 	@ModelAttribute("todosVendidoVeiculo")
