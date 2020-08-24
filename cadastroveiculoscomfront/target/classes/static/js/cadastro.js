@@ -8,6 +8,8 @@ $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event)
 	var form = modal.find('form');
 	var action = form.data('url-base');
 	
+	alert(action);
+	
 	if(!action.endsWith('/')) { action += '/';}
 	
 	form.attr('action', action + codigoVeiculo);
