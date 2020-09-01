@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "67b20477-3806-4a58-b701-a24b8e5328bc",
+		"name": "API Veiculos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Veiculos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"chapa\": \"GOY8200\",\n\t\"marca\": \"Ford\",\n\t\"ano\": 1998,\n\t\"descricao\": \"Ford EcoSport Ano 1998\",\n\t\"vendido\": \"true\",\n\t\"created\": \"2020-05-31\",\n\t\"updated\": \"2019-12-05\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculos"
+					]
+				},
+				"description": "Lista todos os veículos"
+			},
+			"response": []
+		},
+		{
+			"name": "POST Veiculos",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"chapa\": \"GOY8200\",\n\t\"marca\": \"Ford\",\n\t\"ano\": 1998,\n\t\"descricao\": \"Ford EcoSport Ano 1998\",\n\t\"vendido\": \"true\",\n\t\"created\": \"2020-05-31\",\n\t\"updated\": \"2019-12-05\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculos"
+					]
+				},
+				"description": "Cria um novo veículo"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Veiculos {id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"chapa\": \"GOY8200\",\n\t\"marca\": \"Ford\",\n\t\"ano\": 1998,\n\t\"descricao\": \"Ford EcoSport Ano 1998\",\n\t\"vendido\": \"true\",\n\t\"created\": \"2020-05-31\",\n\t\"updated\": \"2019-12-05\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculos/400",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculos",
+						"400"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE Veiculo {id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"chapa\": \"GOY8200\",\n\t\"marca\": \"Ford\",\n\t\"ano\": 1998,\n\t\"descricao\": \"Ford EcoSport Ano 1998\",\n\t\"vendido\": \"true\",\n\t\"created\": \"2020-05-31\",\n\t\"updated\": \"2019-12-05\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculos/400",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculos",
+						"400"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

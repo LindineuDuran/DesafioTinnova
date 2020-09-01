@@ -2,6 +2,7 @@ package com.lduran.cadastra_veiculos.model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,12 +24,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter @Setter
 @Data
+@Entity
 public class Veiculo
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long	id;
-	
+
 	private String	chapa;
 	private String	marca;
 	private int 	ano;
