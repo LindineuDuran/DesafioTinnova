@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lduran.cadastra_veiculos.model.QtdAno;
+import com.lduran.cadastra_veiculos.model.QtdMarca;
 import com.lduran.cadastra_veiculos.model.Veiculo;
 import com.lduran.cadastra_veiculos.repository.filter.VeiculoFilter;
 import com.lduran.cadastra_veiculos.service.VeiculoService;
@@ -54,6 +56,22 @@ public class VeiculoController
 		List<Veiculo> todosVeiculos = this.veiculoService.filtrar(filtro);
 
 		return todosVeiculos;
+	}
+
+	@GetMapping(path = { "/distrib_marca" })
+	public List pesquisarMarca()
+	{
+		List<QtdMarca> distribMarca = this.veiculoService.filtrarQtdMarca();
+
+		return distribMarca;
+	}
+
+	@GetMapping(path = { "/distrib_ano" })
+	public List pesquisarAno()
+	{
+		List<QtdAno> distribMarca = this.veiculoService.filtrarQtdAno();
+
+		return distribMarca;
 	}
 
 	@PostMapping

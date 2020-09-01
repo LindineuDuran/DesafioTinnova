@@ -7,64 +7,6 @@
 	"item": [
 		{
 			"name": "GET Veiculos",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"chapa\": \"GOY8200\",\n\t\"marca\": \"Ford\",\n\t\"ano\": 1998,\n\t\"descricao\": \"Ford EcoSport Ano 1998\",\n\t\"vendido\": \"true\",\n\t\"created\": \"2020-05-31\",\n\t\"updated\": \"2019-12-05\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/veiculos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"veiculos"
-					]
-				},
-				"description": "Lista todos os veículos"
-			},
-			"response": []
-		},
-		{
-			"name": "POST Veiculos",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"chapa\": \"GOY8200\",\n\t\"marca\": \"Ford\",\n\t\"ano\": 1998,\n\t\"descricao\": \"Ford EcoSport Ano 1998\",\n\t\"vendido\": \"true\",\n\t\"created\": \"2020-05-31\",\n\t\"updated\": \"2019-12-05\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/veiculos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"veiculos"
-					]
-				},
-				"description": "Cria um novo veículo"
-			},
-			"response": []
-		},
-		{
-			"name": "GET Veiculos {id}",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -81,24 +23,27 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/veiculos/400",
+					"raw": "http://localhost:8080/veiculos",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"veiculos",
-						"400"
+						"veiculos"
 					]
-				}
+				},
+				"description": "Exibe todos os veículos"
 			},
 			"response": []
 		},
 		{
-			"name": "DELETE Veiculo {id}",
+			"name": "GET Veiculo {id}",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
-				"method": "DELETE",
+				"method": "GET",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -110,7 +55,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/veiculos/400",
+					"raw": "http://localhost:8080/veiculos/10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -118,9 +63,234 @@
 					"port": "8080",
 					"path": [
 						"veiculos",
-						"400"
+						"10"
 					]
-				}
+				},
+				"description": "Retorna um veículo especícico"
+			},
+			"response": []
+		},
+		{
+			"name": "Find a vehicle",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"chapa\": \"GOY8200\",\n\t\"marca\": \"Ford\",\n\t\"ano\": 1998,\n\t\"descricao\": \"Ford EcoSport Ano 1998\",\n\t\"vendido\": \"true\",\n\t\"created\": \"2020-05-31\",\n\t\"updated\": \"2019-12-05\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculos/find?descricao=Golf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculos",
+						"find"
+					],
+					"query": [
+						{
+							"key": "descricao",
+							"value": "Golf"
+						}
+					]
+				},
+				"description": "Encontra um veículo pela descrição"
+			},
+			"response": []
+		},
+		{
+			"name": "POST veiculo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"chapa\": \"GOY8200\",\n\t\"marca\": \"Ford\",\n\t\"ano\": 1998,\n\t\"descricao\": \"Ford EcoSport Ano 1998\",\n\t\"vendido\": \"true\",\n\t\"created\": \"2020-05-31\",\n\t\"updated\": \"2019-12-05\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculos"
+					]
+				},
+				"description": "Insere um novo veículo"
+			},
+			"response": []
+		},
+		{
+			"name": "PUT veiculo {id}",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"vendido\": false,\n\t\"updated\": 2020-09-01\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculos",
+						"2"
+					]
+				},
+				"description": "Atualiza um veículo"
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH veiculo {id}",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"vendido\": false,\n    \"updated\": \"2020-09-01T03:00:00.000+00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculos",
+						"2"
+					]
+				},
+				"description": "ALtera um atributo do veículo"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE veiculo {id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"vendido\": false,\n    \"updated\": \"2020-09-01T03:00:00.000+00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculos",
+						"2"
+					]
+				},
+				"description": "Elimina veículo"
+			},
+			"response": []
+		},
+		{
+			"name": "distrib_marca",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"vendido\": false,\n    \"updated\": \"2020-09-01T03:00:00.000+00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculos/distrib_marca",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculos",
+						"distrib_marca"
+					]
+				},
+				"description": "Obtêm distribuição de veículos por marca"
+			},
+			"response": []
+		},
+		{
+			"name": "distrib_ano",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"vendido\": false,\n    \"updated\": \"2020-09-01T03:00:00.000+00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculos/distrib_ano",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculos",
+						"distrib_ano"
+					]
+				},
+				"description": "Distribuição por ano"
 			},
 			"response": []
 		}

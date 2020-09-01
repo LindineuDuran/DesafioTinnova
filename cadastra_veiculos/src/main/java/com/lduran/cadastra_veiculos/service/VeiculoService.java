@@ -1,12 +1,16 @@
 package com.lduran.cadastra_veiculos.service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.lduran.cadastra_veiculos.model.QtdAno;
+import com.lduran.cadastra_veiculos.model.QtdMarca;
 import com.lduran.cadastra_veiculos.model.Veiculo;
 import com.lduran.cadastra_veiculos.repository.VeiculoRepository;
 import com.lduran.cadastra_veiculos.repository.filter.VeiculoFilter;
@@ -72,5 +76,18 @@ public class VeiculoService
 		String descricao = filtro.getDescricao() == null ? "%" : filtro.getDescricao();
 
 		return this.rep.findByDescricaoContaining(descricao);
+	}
+
+	public List<QtdMarca> filtrarQtdMarca()
+	{
+		return this.rep.distribPorMarca();
+	}
+
+	public List<QtdAno> filtrarQtdAno()
+	{
+		Map<Integer, Long> map = this.rep.findAll().stream().collect(Collectors.groupingBy(Veiculo::getDecada, Collectors.counting()));
+		List<QtdAno> lista = map.entrySet().stream().map(e -> new QtdAno(Integer.toString(e.getKey()), e.getValue())).collect(Collectors.toList()); 
+
+		return lista;
 	}
 }

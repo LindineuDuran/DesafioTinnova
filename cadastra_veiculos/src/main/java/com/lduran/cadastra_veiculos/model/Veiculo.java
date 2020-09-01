@@ -38,4 +38,12 @@ public class Veiculo
 	private boolean	vendido;
 	private Date	created;
 	private Date	updated;
+
+	public int getDecada()
+	{
+		String strDecada = Integer.toString(this.ano).substring(0, 3) + "0";
+		int decada = Integer.parseInt(strDecada);
+
+		return decada;
+	}
 }
