@@ -47,7 +47,7 @@ public class VeiculoService
 			record.setChapa(veiculo.getChapa());
 			record.setMarca(veiculo.getMarca());
 			record.setAno(veiculo.getAno());
-			record.setVendido(veiculo.getVendido());
+			record.setVendido(veiculo.isVendido());
 			record.setDescricao(veiculo.getDescricao());
 			record.setUpdated(veiculo.getUpdated());
 
@@ -81,7 +81,11 @@ public class VeiculoService
 
 	public List<QtdMarca> filtrarQtdMarca()
 	{
-		return this.rep.distribPorMarca();
+		return this.rep.findAll()
+				.stream()
+				.collect(Collectors.groupingBy(Veiculo::getMarca, Collectors.counting()))
+				.entrySet().stream().map(e -> new QtdMarca(e.getKey(), e.getValue()))
+				.collect(Collectors.toList());
 	}
 
 	public List<QtdAno> filtrarQtdAno()
@@ -93,5 +97,10 @@ public class VeiculoService
 				.collect(Collectors.toList());
 
 		return lista;
+	}
+
+	public List<Veiculo> filtrarNaoVendido()
+	{
+		return this.rep.findByVendido(false);
 	}
 }

@@ -20,10 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lduran.cadastra_veiculos.model.Marca;
 import com.lduran.cadastra_veiculos.model.QtdAno;
 import com.lduran.cadastra_veiculos.model.QtdMarca;
 import com.lduran.cadastra_veiculos.model.Veiculo;
-import com.lduran.cadastra_veiculos.model.Vendido;
 import com.lduran.cadastra_veiculos.repository.filter.VeiculoFilter;
 import com.lduran.cadastra_veiculos.service.VeiculoService;
 
@@ -76,6 +76,14 @@ public class VeiculoController
 		return distribMarca;
 	}
 
+	@GetMapping(path = { "/nao_vendido" })
+	public List pesquisarNaoVendido()
+	{
+		List<Veiculo> todosVeiculos = this.veiculoService.filtrarNaoVendido();
+
+		return todosVeiculos;
+	}
+
 	@PostMapping
 	public String create(@RequestBody Veiculo veiculo)
 	{
@@ -115,8 +123,8 @@ public class VeiculoController
 			// use reflection to get field k on manager and set it to value v
 			Field field = ReflectionUtils.findField(Veiculo.class, (String) k);
 
-			// Se o atributo a ser alterado for "vendido", pega o ENUM por meio da posição
-			v = (String) k == "vendido" ? Vendido.values()[Integer.parseInt((String) v)] : v;
+			// Se o atributo a ser alterado for "marca", pega o ENUM que corresponda ao valor
+			v = (String) k == "marca" ? Marca.valueOf(((String) v).toUpperCase()): v;
 
 			field.setAccessible(true);
 

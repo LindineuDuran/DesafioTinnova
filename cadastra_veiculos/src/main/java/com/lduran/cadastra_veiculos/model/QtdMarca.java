@@ -2,14 +2,14 @@ package com.lduran.cadastra_veiculos.model;
 
 public class QtdMarca
 {
-	private String marca;
+	private Marca marca;
 	private long quantidade;
 
 	/**
 	 * @param marca
 	 * @param quantidade
 	 */
-	public QtdMarca(String marca, long quantidade)
+	public QtdMarca(Marca marca, long quantidade)
 	{
 		this.marca = marca;
 		this.quantidade = quantidade;
@@ -18,7 +18,7 @@ public class QtdMarca
 	/**
 	 * @return the marca
 	 */
-	public String getMarca()
+	public Marca getMarca()
 	{
 		return this.marca;
 	}
@@ -26,7 +26,7 @@ public class QtdMarca
 	/**
 	 * @param marca the marca to set
 	 */
-	public void setMarca(String marca)
+	public void setMarca(Marca marca)
 	{
 		this.marca = marca;
 	}

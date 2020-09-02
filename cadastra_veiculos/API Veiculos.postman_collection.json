@@ -116,7 +116,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"chapa\": \"GOY8299\",\n\t\"marca\": \"Ford\",\n\t\"ano\": 1995,\n\t\"descricao\": \"Ford EcoSport Ano 1995\",\n\t\"vendido\": 0\n}",
+					"raw": "{\n\t\"chapa\": \"GOY8299\",\n\t\"marca\": \"FORD\",\n\t\"ano\": 1995,\n\t\"descricao\": \"Ford EcoSport Ano 1995\",\n\t\"vendido\": false\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -145,7 +145,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"chapa\": \"GOY8299\",\n\t\"marca\": \"Ford\",\n\t\"ano\": 1995,\n\t\"descricao\": \"Ford EcoSport Ano 1995\",\n\t\"vendido\": 0\n}",
+					"raw": "{\n\t\"chapa\": \"JOY8209\",\n\t\"marca\": \"FORD\",\n\t\"ano\": 2000,\n\t\"descricao\": \"Ford EcoSport Ano 2000\",\n\t\"vendido\": false\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -175,7 +175,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"vendido\": \"0\"\n}",
+					"raw": "{\n\t\"vendido\": true\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -229,7 +229,7 @@
 			"response": []
 		},
 		{
-			"name": "distrib_marca",
+			"name": "/distrib_marca",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -262,7 +262,7 @@
 			"response": []
 		},
 		{
-			"name": "distrib_ano",
+			"name": "/distrib_ano",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -291,6 +291,38 @@
 					]
 				},
 				"description": "Distribuição por ano"
+			},
+			"response": []
+		},
+		{
+			"name": "/nao_vendido",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/veiculos/nao_vendido",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"veiculos",
+						"nao_vendido"
+					]
+				}
 			},
 			"response": []
 		}
