@@ -1,6 +1,7 @@
 package com.lduran.cadastra_veiculos.controller;
 
 import java.lang.reflect.Field;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lduran.cadastra_veiculos.model.QtdAno;
 import com.lduran.cadastra_veiculos.model.QtdMarca;
 import com.lduran.cadastra_veiculos.model.Veiculo;
+import com.lduran.cadastra_veiculos.model.Vendido;
 import com.lduran.cadastra_veiculos.repository.filter.VeiculoFilter;
 import com.lduran.cadastra_veiculos.service.VeiculoService;
 
@@ -77,12 +79,21 @@ public class VeiculoController
 	@PostMapping
 	public String create(@RequestBody Veiculo veiculo)
 	{
+		// data atual
+		Date agora = new Date();
+		veiculo.setCreated(agora);
+		veiculo.setUpdated(agora);
+
 		return this.veiculoService.salvar(veiculo);
 	}
 
 	@PutMapping(value = "/{id}")
 	public ResponseEntity update(@PathVariable("id") long id, @RequestBody Veiculo veiculo)
 	{
+		// data atual
+		Date agora = new Date();
+		veiculo.setUpdated(agora);
+
 		return this.veiculoService.atualizar(id, veiculo);
 	}
 
@@ -104,10 +115,16 @@ public class VeiculoController
 			// use reflection to get field k on manager and set it to value v
 			Field field = ReflectionUtils.findField(Veiculo.class, (String) k);
 
+			v = (String) k == "vendido" ? Vendido.values()[Integer.parseInt((String) v)] : v;
+
 			field.setAccessible(true);
 
 			ReflectionUtils.setField(field, veiculo, v);
 		});
+
+		// data atual
+		Date agora = new Date();
+		veiculo.setUpdated(agora);
 
 		this.veiculoService.atualizar(id, veiculo);
 	}

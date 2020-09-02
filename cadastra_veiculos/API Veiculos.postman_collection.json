@@ -15,7 +15,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"chapa\": \"GOY8200\",\n\t\"marca\": \"Ford\",\n\t\"ano\": 1998,\n\t\"descricao\": \"Ford EcoSport Ano 1998\",\n\t\"vendido\": \"true\",\n\t\"created\": \"2020-05-31\",\n\t\"updated\": \"2019-12-05\"\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -116,7 +116,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"chapa\": \"GOY8200\",\n\t\"marca\": \"Ford\",\n\t\"ano\": 1998,\n\t\"descricao\": \"Ford EcoSport Ano 1998\",\n\t\"vendido\": \"true\",\n\t\"created\": \"2020-05-31\",\n\t\"updated\": \"2019-12-05\"\n}",
+					"raw": "{\n\t\"chapa\": \"GOY8299\",\n\t\"marca\": \"Ford\",\n\t\"ano\": 1995,\n\t\"descricao\": \"Ford EcoSport Ano 1995\",\n\t\"vendido\": 0\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -141,11 +141,11 @@
 		{
 			"name": "PUT veiculo {id}",
 			"request": {
-				"method": "PATCH",
+				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"vendido\": false,\n\t\"updated\": 2020-09-01\n}",
+					"raw": "{\n\t\"chapa\": \"GOY8299\",\n\t\"marca\": \"Ford\",\n\t\"ano\": 1995,\n\t\"descricao\": \"Ford EcoSport Ano 1995\",\n\t\"vendido\": 0\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -175,7 +175,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"vendido\": false,\n    \"updated\": \"2020-09-01T03:00:00.000+00:00\"\n}",
+					"raw": "{\n\t\"vendido\": \"0\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

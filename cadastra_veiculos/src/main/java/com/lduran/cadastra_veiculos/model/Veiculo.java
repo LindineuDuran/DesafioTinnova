@@ -35,10 +35,14 @@ public class Veiculo
 	private String	marca;
 	private int 	ano;
 	private String	descricao;
-	private boolean	vendido;
+	private Vendido	vendido;
 	private Date	created;
 	private Date	updated;
 
+	/**
+	 * Obtêm a década do veículo
+	 * @return
+	 */
 	public int getDecada()
 	{
 		String strDecada = Integer.toString(this.ano).substring(0, 3) + "0";

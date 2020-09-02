@@ -1,7 +1,6 @@
 package com.lduran.cadastra_veiculos.service;
 
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,10 +47,12 @@ public class VeiculoService
 			record.setChapa(veiculo.getChapa());
 			record.setMarca(veiculo.getMarca());
 			record.setAno(veiculo.getAno());
+			record.setVendido(veiculo.getVendido());
 			record.setDescricao(veiculo.getDescricao());
+			record.setUpdated(veiculo.getUpdated());
 
-			Veiculo updated = this.rep.save(record);
-			return ResponseEntity.ok().body(updated);
+			Veiculo atualizado = this.rep.save(record);
+			return ResponseEntity.ok().body(atualizado);
 		}).orElse(ResponseEntity.notFound().build());
 	}
 
@@ -85,8 +86,11 @@ public class VeiculoService
 
 	public List<QtdAno> filtrarQtdAno()
 	{
-		Map<Integer, Long> map = this.rep.findAll().stream().collect(Collectors.groupingBy(Veiculo::getDecada, Collectors.counting()));
-		List<QtdAno> lista = map.entrySet().stream().map(e -> new QtdAno(Integer.toString(e.getKey()), e.getValue())).collect(Collectors.toList()); 
+		List<QtdAno> lista = this.rep.findAll()
+				.stream()
+				.collect(Collectors.groupingBy(Veiculo::getDecada, Collectors.counting()))
+				.entrySet().stream().map(e -> new QtdAno(e.getKey(), e.getValue()))
+				.collect(Collectors.toList());
 
 		return lista;
 	}
