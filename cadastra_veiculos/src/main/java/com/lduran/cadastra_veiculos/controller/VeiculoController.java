@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ReflectionUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,12 +29,14 @@ import com.lduran.cadastra_veiculos.repository.filter.VeiculoFilter;
 import com.lduran.cadastra_veiculos.service.VeiculoService;
 
 /**
- * SpringBoot RestController that creates all service endpoints related to the vehicle.
- * 
+ * SpringBoot RestController that creates all service endpoints related to the
+ * vehicle.
+ *
  * @author Lindineu Duran
  * @since 23/08/2020
  */
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping({ "/veiculos" })
 public class VeiculoController
 {
@@ -123,8 +126,9 @@ public class VeiculoController
 			// use reflection to get field k on manager and set it to value v
 			Field field = ReflectionUtils.findField(Veiculo.class, (String) k);
 
-			// Se o atributo a ser alterado for "marca", pega o ENUM que corresponda ao valor
-			v = (String) k == "marca" ? Marca.valueOf(((String) v).toUpperCase()): v;
+			// Se o atributo a ser alterado for "marca", pega o ENUM que corresponda ao
+			// valor
+			v = (String) k == "marca" ? Marca.valueOf(((String) v).toUpperCase()) : v;
 
 			field.setAccessible(true);
 
