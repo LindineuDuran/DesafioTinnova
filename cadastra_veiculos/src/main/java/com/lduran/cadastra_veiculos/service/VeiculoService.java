@@ -16,7 +16,7 @@ import com.lduran.cadastra_veiculos.repository.filter.VeiculoFilter;
 
 /**
  * Service that implements methods related to a transaction.
- * 
+ *
  * @author Lindineu Duran
  * @since 23/08/2020
  */
@@ -61,6 +61,11 @@ public class VeiculoService
 		this.rep.deleteById(id);
 	}
 
+	public void excluirTodos()
+	{
+		this.rep.deleteAll();
+	}
+
 	public List<Veiculo> listarTodos()
 	{
 		return this.rep.findAll();
@@ -81,20 +86,15 @@ public class VeiculoService
 
 	public List<QtdMarca> filtrarQtdMarca()
 	{
-		return this.rep.findAll()
-				.stream()
-				.collect(Collectors.groupingBy(Veiculo::getMarca, Collectors.counting()))
-				.entrySet().stream().map(e -> new QtdMarca(e.getKey(), e.getValue()))
-				.collect(Collectors.toList());
+		return this.rep.findAll().stream().collect(Collectors.groupingBy(Veiculo::getMarca, Collectors.counting()))
+				.entrySet().stream().map(e -> new QtdMarca(e.getKey(), e.getValue())).collect(Collectors.toList());
 	}
 
 	public List<QtdAno> filtrarQtdAno()
 	{
-		List<QtdAno> lista = this.rep.findAll()
-				.stream()
-				.collect(Collectors.groupingBy(Veiculo::getDecada, Collectors.counting()))
-				.entrySet().stream().map(e -> new QtdAno(e.getKey(), e.getValue()))
-				.collect(Collectors.toList());
+		List<QtdAno> lista = this.rep.findAll().stream()
+				.collect(Collectors.groupingBy(Veiculo::getDecada, Collectors.counting())).entrySet().stream()
+				.map(e -> new QtdAno(e.getKey(), e.getValue())).collect(Collectors.toList());
 
 		return lista;
 	}

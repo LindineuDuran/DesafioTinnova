@@ -114,6 +114,12 @@ public class VeiculoController
 		this.veiculoService.excluir(id);
 	}
 
+	@DeleteMapping
+	public void deleteAll()
+	{
+		this.veiculoService.excluirTodos();
+	}
+
 	@PatchMapping(value = "/{id}")
 	public @ResponseBody void saveContact(@PathVariable Long id, @RequestBody Map<Object, Object> fields)
 	{
