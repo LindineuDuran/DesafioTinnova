@@ -1,0 +1,23 @@
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">LDURAN</a>
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="veiculos" class="nav-link">Veiculos</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="veiculo-novo" class="nav-link">Novo Veículo</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="distribuicao-por-ano" class="nav-link">Distribuição por Ano</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="distribuicao-por-marca" class="nav-link">Distribuição por Marca</a>
+      </li>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>

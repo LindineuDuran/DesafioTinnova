@@ -1,0 +1,24 @@
+<div class="card" style="width: 600px; margin: auto;">
+		<div class="card-header">
+			<div class="clearfix">
+				<h5 class="card-title aw-titulo-card">Distribuição de Veículos por Ano</h5>
+				<a class="btn btn-link aw-link-card" href="#">Voltar para pesquisa</a>
+			</div>
+		</div>
+		<div class="card-body">
+			<table class="table table-bordered table-striped table-sm">
+				<thead>
+					<tr>
+						<th>Ano</th>
+						<th>Quantidade</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let qtdAno of lstQtdsAno; let i = index">
+						<td>{{ qtdAno.ano }}</td>
+						<td>{{ qtdAno.quantidade }}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>

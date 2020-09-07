@@ -1,0 +1,66 @@
+<div class="submit-form">
+    <div *ngIf="currentVeiculo" class="edit-form">
+        <div class="card">
+            <div class="card-header">
+                <div class="clearfix">
+                    <h5 class="card-title aw-titulo-card">Veículo</h5>
+                    <a class="btn btn-link aw-link-card" href="#">Voltar para pesquisa</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <form>
+					<div class="form-group row">
+						<label for="chapa" class="col-sm-2 col-form-label">Chapa</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" required [(ngModel)]="currentVeiculo.chapa" name="chapa">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="marca" class="col-sm-2 col-form-label">Marca</label>
+						<div class="col-sm-2">
+							<select class="custom-select my-1 mr-sm-2" [(ngModel)]="currentVeiculo.marca" name="marca">
+								<option selected>Choose...</option>
+								<option value="CHEVROLET">Chevrolet</option>
+								<option value="FORD">Ford</option>
+								<option value="HONDA">Honda</option>
+								<option value="VOLKSWAGEN">VolksWagen</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="ano" class="col-sm-2 col-form-label">Ano</label>
+						<div class="col-sm-2">
+							<input type="text" class="form-control" [(ngModel)]="currentVeiculo.ano" name="ano">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" [(ngModel)]="currentVeiculo.descricao" name="descricao">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="vendido" class="col-sm-2 col-form-label">Vendido</label>
+                        {{ currentVeiculo.vendido ? "Sim" : "Não" }}
+						<!-- <div class="col-sm-2">
+							<select class="form-control" [(ngModel)]="currentVeiculo.vendido" name="vendido">
+								<option value="false">Não</option>
+								<option value="true">Sim</option>
+							</select>
+						</div> -->
+					</div>
+				</form>
+
+				<button *ngIf="currentVeiculo.vendido" class="badge badge-primary mr-2" (click)="updateVendido(false)">Cancelar Venda</button>
+				<button *ngIf="!currentVeiculo.vendido" class="badge badge-primary mr-2"(click)="updateVendido(true)">Vender</button>
+				<button class="badge badge-danger mr-2" (click)="deleteVeiculo()">Delete</button>
+				<button type="submit" class="badge badge-success" (click)="updateVeiculo()">Update</button>
+				<p>{{ message }}</p>
+            </div>
+            <div *ngIf="!currentVeiculo">
+              <br />
+              <p>Cannot access this Veiculo...</p>
+            </div>
+        </div>
+    </div>
+</div>
