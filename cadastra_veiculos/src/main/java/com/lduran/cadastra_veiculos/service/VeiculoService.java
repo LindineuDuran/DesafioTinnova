@@ -26,17 +26,17 @@ public class VeiculoService
 	@Autowired
 	private VeiculoRepository rep;
 
-	public String salvar(Veiculo veiculo)
+	public ResponseEntity<Veiculo> salvar(Veiculo veiculo)
 	{
 		try
 		{
-			this.rep.save(veiculo);
+			Veiculo salvo = this.rep.save(veiculo);
 
-			return "Veículo salvo com sucesso!";
+			return ResponseEntity.ok().body(salvo);
 		}
 		catch (DataIntegrityViolationException e)
 		{
-			return "Formato de data inválido";
+			return ResponseEntity.notFound().build();
 		}
 	}
 

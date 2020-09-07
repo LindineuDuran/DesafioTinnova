@@ -88,7 +88,7 @@ public class VeiculoController
 	}
 
 	@PostMapping
-	public String create(@RequestBody Veiculo veiculo)
+	public ResponseEntity create(@RequestBody Veiculo veiculo)
 	{
 		// data atual
 		Date agora = new Date();
