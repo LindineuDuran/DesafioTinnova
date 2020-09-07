@@ -1,63 +1,60 @@
-<div class="submit-form">
-    <div *ngIf="!submitted">
-        <div class="card">
-            <div class="card-header">
-                <div class="clearfix">
-                    <h5 class="card-title aw-titulo-card">Novo Veículo</h5>
-                    <a class="btn btn-link aw-link-card" href="#">Voltar para pesquisa</a>
-                </div>
+<div>
+   <div class="submit-form">
+      <div class="card">
+         <div class="card-header">
+            <div class="clearfix">
+               <h5 class="card-title aw-titulo-card">Novo Veículo</h5>
+               <a class="btn btn-link aw-link-card" href="#">Voltar para pesquisa</a>
             </div>
-            <div class="card-body">
-                <div class="form-group row">
-                    <label for="chapa" class="col-sm-2 col-form-label">Chapa</label>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" required [(ngModel)]="chapa" name="chapa">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="marca" class="col-sm-2 col-form-label">Marca</label>
-                    <div class="col-sm-2">
-                        <select class="custom-select my-1 mr-sm-2" [(ngModel)]="marca" name="marca">
-                            <option selected>Choose...</option>
-                            <option value="CHEVROLET">Chevrolet</option>
-                            <option value="FORD">Ford</option>
-                            <option value="HONDA">Honda</option>
-                            <option value="VOLKSWAGEN">VolksWagen</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="ano" class="col-sm-2 col-form-label">Ano</label>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" [(ngModel)]="ano" name="ano">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" [(ngModel)]="descricao" name="descricao">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="vendido" class="col-sm-2 col-form-label">Vendido</label>
-                    <div class="col-sm-2">
-                        <select class="form-control" [(ngModel)]="vendido" name="vendido">
-                            <option value="false">Não</option>
-                            <option value="true">Sim</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-sm-2">
-                        <button (click)="saveVeiculo()" type="submit" class="btn btn-primary">Salvar</button>
-        				<!-- <p>{{ message }}</p> -->
-                    </div>
-                </div>
+         </div>
+         <div class="card-body">
+            <div *ngIf="!submitted">
+               <div class="form-group row">
+                  <label for="chapa" class="col-sm-2 col-form-label">Chapa</label>
+                  <div class="col-sm-2">
+                     <input type="text" class="form-control" required [(ngModel)]="chapa" name="chapa">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="marca" class="col-sm-2 col-form-label">Marca</label>
+                  <div class="col-sm-2">
+                     <select class="custom-select my-1 mr-sm-2" [(ngModel)]="marca" name="marca">
+                     <option selected>Choose...</option>
+                     <option value="CHEVROLET">Chevrolet</option>
+                     <option value="FORD">Ford</option>
+                     <option value="HONDA">Honda</option>
+                     <option value="VOLKSWAGEN">VolksWagen</option>
+                     </select>
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="ano" class="col-sm-2 col-form-label">Ano</label>
+                  <div class="col-sm-2">
+                     <input type="text" class="form-control" [(ngModel)]="ano" name="ano">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="descricao" class="col-sm-2 col-form-label">Descrição</label>
+                  <div class="col-sm-6">
+                     <input type="text" class="form-control" [(ngModel)]="descricao" name="descricao">
+                  </div>
+               </div>
+               <div class="form-group row">
+                  <label for="vendido" class="col-sm-2 col-form-label">Vendido</label>
+                  <div class="col-sm-2">
+                     <select class="form-control" [(ngModel)]="vendido" name="vendido">
+                     <option value="false">Não</option>
+                     <option value="true">Sim</option>
+                     </select>
+                  </div>
+               </div>
+               <button (click)="saveVeiculo()" type="submit" class="btn btn-primary">Salvar</button>
             </div>
-        </div>
-    </div>
-    <div *ngIf="submitted">
-        <h4>You submitted successfully!</h4>
-        <button class="btn btn-success" (click)="newVeiculo()">Add</button>
-    </div>
+            <div *ngIf="submitted">
+               <h4>You submitted successfully!</h4>
+               <button class="btn btn-success" (click)="newVeiculo()">Add</button>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
