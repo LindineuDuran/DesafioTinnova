@@ -95,7 +95,15 @@ public class VeiculoController
 		veiculo.setCreated(agora);
 		veiculo.setUpdated(agora);
 
-		return this.veiculoService.salvar(veiculo);
+		if (veiculo.getChapa() != null)
+		{
+			return this.veiculoService.salvar(veiculo);
+		}
+		else
+		{
+			Veiculo salvo = new Veiculo();
+			return ResponseEntity.ok().body(salvo);
+		}
 	}
 
 	@PutMapping(value = "/{id}")
