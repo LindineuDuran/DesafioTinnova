@@ -1,0 +1,19 @@
+// Creating a Custom Network to Connect MySQL and WebApplication
+docker network create mysqlNET
+
+// Baixar imagem do MySQL
+docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=todos-user --env MYSQL_PASSWORD=dummytodos --env MYSQL_DATABASE=CadastroVeicularDb --name mysql --publish 3306:3306 --network=cadastro-veicular-network --volume mysql-database-volume:/var/lib/mysql mysql:5.7
+
+// Gerar imagem da API dentro Eclipse/Maven
+clean package -DskipTests
+
+// Gerar o Container da API
+docker container run -d --restart=always -p 8080:8080 --network=cadastro-veicular-network -e RDS_HOSTNAME=mysql  lduran355/cadastra_veiculos:0.0.1-SNAPSHOT
+
+// Gerar imagem do Front-End
+docker build -t lduran355/cadastro-veicular-app .
+
+// Gerar o Container do Front-End
+docker run -d --restart=always -p 8081:80 --network=cadastro-veicular-network lduran355/cadastro-veicular-app
+
+docker-compose up -f docker-compose.yml -d

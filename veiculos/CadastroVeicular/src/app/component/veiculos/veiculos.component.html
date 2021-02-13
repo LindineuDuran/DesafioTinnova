@@ -1,0 +1,48 @@
+<div class="card">
+	<div class="card-header">
+		<div class="clearfix">
+			<h5 class="card-title aw-titulo-card">Lista de Veículos</h5>
+		</div>
+	</div>
+	<div class="card-body">
+		<div class="list row">
+			<div class="col-md-8">
+				<div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Search by descricao" [(ngModel)]="descricao"/>
+					<div class="input-group-append">
+						<button class="btn btn-secondary" type="button" (click)="searchDescricao()">
+							<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAP9JREFUOI2V098qRFEUx/FPI5I8gAzvoCQpPIciuaFEJrl3p+bCa0xJTW68iJqivIU/GTFnXJzF7DlmjuNXu7Vbf75nrfY6DKuOJjro4hMPuMSiP7SNF/THnFfslRVnkXiNDcxiGutoJ6BfkHry5eOSDs+SThbSQDMCrdIBc91E7mXq7IRzpQJgM3LvU2cXPUxUAMwE4OPbUatQlCoL208Bj2GXKgCWw/6MUMNt3BsVACdh26lzHs/R1n5J8ZHBLpwWg1sGi9TCKiYxhTVcGd7KDIejIE/Gr3LxZDgoQuZwgTu8yZ+4I1+2hvy5U8h7ycgjtVuA9P4LgB35/9DD+ReHzFelb6/cQAAAAABJRU5ErkJggg==" alt="" />
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<h4>Lista de Veículos</h4>
+				<select multiple class="form-control" id="listVeiculos">
+				  <option  *ngFor="let veiculo of veiculos; let i = index" [class.active]="i == currentIndex" (click)="setActiveVeiculo(veiculo, i)">{{ veiculo.descricao }}</option>
+				</select>
+				<a class="m-1 btn btn-sm btn-primary" routerLink="/veiculo-novo">Novo Veículo</a>
+				<button class="m-1 btn btn-sm btn-danger" (click)="removeAllVeiculos()">Elimina Todos</button>
+			</div>
+			<div class="col-md-6">
+				<div *ngIf="currentVeiculo">
+					<h4>Veiculo</h4>
+					<div><label><strong>Chapa:</strong></label>{{ currentVeiculo.chapa }}</div>
+					<div><label><strong>Marca:</strong></label>{{ currentVeiculo.marca }}</div>
+					<div><label><strong>Ano:</strong></label>{{ currentVeiculo.ano }}</div>
+					<div><label><strong>Descrição:</strong></label>{{ currentVeiculo.descricao }}</div>
+					<div><label><strong>Vendido:</strong></label>{{ currentVeiculo.vendido }}</div>
+					<div><label><strong>Cadastrado:</strong></label>{{ currentVeiculo.created }}</div>
+					<div><label><strong>Atualizado:</strong></label>{{ currentVeiculo.updated }}</div>
+
+					<a class="m-1 btn btn-sm btn-warning" routerLink="/veiculos/{{ currentVeiculo.id }}">Edit</a>
+				</div>
+
+				<div *ngIf="!currentVeiculo">
+					<br />
+					<p>Por favor click em um Veículo...</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

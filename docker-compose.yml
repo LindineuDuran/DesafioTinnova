@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_USER: veiculos-user
+      MYSQL_PASSWORD: dummyveiculos
+      MYSQL_ROOT_PASSWORD: dummypassword
+      MYSQL_DATABASE: veiculos
+    volumes: 
+      - mysql-database-data-volume:/var/lib/mysql
+    networks:
+      - mysqlNET
+
+  cadastra_veiculos:
+    image: lduran355/cadastra_veiculos:0.0.1-SNAPSHOT
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on: # Start the depends_on first
+      - mysql
+    environment:
+      RDS_HOSTNAME: mysql
+      RDS_PORT: 3306
+      MYSQL_USER: veiculos-user
+      MYSQL_PASSWORD: dummyveiculos
+      MYSQL_ROOT_PASSWORD: dummypassword
+      MYSQL_DATABASE: veiculos
+    networks:
+      - mysqlNET
+      
+  cadastro-veicular-app:
+    image: lduran355/cadastro-veicular-app:latest
+    container_name: cadastra_veiculos_app
+    depends_on: # Start the depends_on first
+      - cadastra_veiculos
+    networks:
+      - mysqlNET
+    ports:
+      - "8081:80"
+    restart: always
+
+# Volumes
+volumes: 
+  mysql-database-data-volume:
+  
+# Networks to be created to facilitate communication between containers
+networks:
+  mysqlNET:

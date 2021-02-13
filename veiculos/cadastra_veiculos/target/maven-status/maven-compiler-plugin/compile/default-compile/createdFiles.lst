@@ -1,0 +1,11 @@
+com\lduran\cadastra_veiculos\model\QtdAno.class
+com\lduran\cadastra_veiculos\model\Veiculo.class
+com\lduran\cadastra_veiculos\controller\VeiculoController.class
+com\lduran\cadastra_veiculos\model\Marca.class
+com\lduran\cadastra_veiculos\model\Vendido.class
+com\lduran\cadastra_veiculos\repository\filter\VeiculoFilter.class
+com\lduran\cadastra_veiculos\repository\VeiculoRepository.class
+com\lduran\cadastra_veiculos\configuration\SwaggerConfig.class
+com\lduran\cadastra_veiculos\CadastraVeiculosApplication.class
+com\lduran\cadastra_veiculos\model\QtdMarca.class
+com\lduran\cadastra_veiculos\service\VeiculoService.class
