@@ -2,7 +2,7 @@
 docker network create mysqlNET
 
 // Baixar imagem do MySQL
-docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=todos-user --env MYSQL_PASSWORD=dummytodos --env MYSQL_DATABASE=CadastroVeicularDb --name mysql --publish 3306:3306 --network=cadastro-veicular-network --volume mysql-database-volume:/var/lib/mysql mysql:5.7
+docker run --detach --env MYSQL_ROOT_PASSWORD=dummypassword --env MYSQL_USER=veiculos-user --env MYSQL_PASSWORD=dummyveiculos --env MYSQL_DATABASE=veiculos --name mysql --publish 3306:3306 --network=cadastro-veicular-network --volume mysql-database-volume:/var/lib/mysql mysql:5.7
 
 // Gerar imagem da API dentro Eclipse/Maven
 clean package -DskipTests
